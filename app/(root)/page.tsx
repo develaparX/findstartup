@@ -1,5 +1,7 @@
 import SearchForm from "@/components/SearchForm";
 import StartupCard from "@/components/StartupCard";
+import { client } from "@/sanity/lib/client";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Home({
   searchParams,
@@ -8,19 +10,22 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
 
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "Arfian" },
-      _id: 1,
-      description: "This is a description",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMGI0MjU5OTUtZmYwNS00NzdiLThhMzQtMTgzYTJlOTY5N2U2XkEyXkFqcGc@._V1_.jpg",
-      category: "Anime",
-      title: "Ishura Season 2",
-    },
-  ];
+  const posts = await client.fetch(STARTUPS_QUERY)
+
+
+  // const posts = [
+  //   {
+  //     _createdAt: new Date(),
+  //     views: 55,
+  //     author: { _id: 1, name: "Arfian" },
+  //     _id: 1,
+  //     description: "This is a description",
+  //     image:
+  //       "https://m.media-amazon.com/images/M/MV5BMGI0MjU5OTUtZmYwNS00NzdiLThhMzQtMTgzYTJlOTY5N2U2XkEyXkFqcGc@._V1_.jpg",
+  //     category: "Anime",
+  //     title: "Ishura Season 2",
+  //   },
+  // ];
 
   return (
     <>
