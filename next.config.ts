@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  // to visualize how PPR on NEXTJS Work
+  experimental:{
+    ppr:'incremental'
+  },
+  devIndicators:{
+    appIsrStatus:true,
+    buildActivity:true,
+    buildActivityPosition:"bottom-right"
+  }
 };
 
 export default nextConfig;
